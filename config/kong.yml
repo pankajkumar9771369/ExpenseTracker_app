@@ -1,0 +1,36 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+  - name: auth-service
+    url: http://auth-service:9810
+    routes:
+      - name: auth-login
+        paths:
+          - /auth/v1/login
+        methods:
+          - POST
+      - name: auth-signup
+        paths:
+          - /auth/v1/signup
+        methods:
+          - POST
+      - name: auth-refresh
+        paths:
+          - /auth/v1/refreshToken
+        methods:
+          - POST
+
+  - name: user-service
+    url: http://user-service:9898
+    routes:
+      - name: user-get
+        paths:
+          - /user/v1/getUser
+        methods:
+          - GET
+      - name: user-create-update
+        paths:
+          - /user/v1/createUpdate
+        methods:
+          - POST
